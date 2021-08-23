@@ -33,3 +33,5 @@ export function memoize
 		}
 	}
 }
+
+export * as logger from "./logger";
