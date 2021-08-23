@@ -6,8 +6,8 @@ import generateTypes from "./plugins/generate-types";
 export default {
 	input: "src/index.ts",
 	output: {
-		file: "lib/index.js",
-		format: "esm"
+		dir: "lib",
+		format: "cjs"
 	},
 	plugins: [
 		typescript(),
