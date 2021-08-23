@@ -1,6 +1,8 @@
 import { RollupOptions } from "rollup";
 import typescript from "@rollup/plugin-typescript";
 
+import generateTypes from "./plugins/generate-types";
+
 export default {
 	input: "src/index.ts",
 	output: {
@@ -8,6 +10,7 @@ export default {
 		format: "esm"
 	},
 	plugins: [
-		typescript()
+		typescript(),
+		generateTypes()
 	]
 } as RollupOptions
