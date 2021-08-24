@@ -1,6 +1,6 @@
 export function debounce
 	<FunctionInputType extends Array<unknown>>
-	(func: (...args: FunctionInputType) => void, timeout = 300): (...args: FunctionInputType) => void {
+(func: (...args: FunctionInputType) => void, timeout = 300): (...args: FunctionInputType) => void {
 
 	let timer: NodeJS.Timeout;
 
@@ -10,12 +10,12 @@ export function debounce
 		timer = setTimeout(() => {
 			func.apply(null, args);
 		}, timeout);
-	}
+	};
 }
 
 export function memoize
 	<FunctionInputType extends Array<unknown>>
-	(func: (...args: FunctionInputType) => void): (...args: FunctionInputType) => void {
+(func: (...args: FunctionInputType) => void): (...args: FunctionInputType) => void {
 
 	const memory = new Map<unknown, unknown>();
 
@@ -31,7 +31,7 @@ export function memoize
 			memory.set(argsKey, output);
 			return output;
 		}
-	}
+	};
 }
 
 export * as logger from "./logger";

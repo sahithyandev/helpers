@@ -12,12 +12,12 @@ const executeCommand = (commandString: string) => {
 
 			resolve(stdout);
 		});
-	})
-}
+	});
+};
 
 export default function generateTypes(): Plugin {
 	let entries: string[] | { [entryAlias: string]: string } = [];
-	let outputDir: string = "";
+	let outputDir = "";
 
 	return {
 		name: "generate-types",
@@ -36,5 +36,5 @@ export default function generateTypes(): Plugin {
 				});
 			}
 		}
-	}
+	};
 }

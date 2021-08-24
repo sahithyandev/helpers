@@ -13,4 +13,4 @@ export default {
 		typescript(),
 		generateTypes()
 	]
-} as RollupOptions
+} as RollupOptions;
