@@ -34,4 +34,12 @@ export function memoize
 	};
 }
 
+export function transformKeys
+	<ObjectValueType = unknown>(obj: Record<string, ObjectValueType>, transformFunction: (key: string) => string): Record<string, ObjectValueType> {
+
+	return Object.fromEntries(Object.entries(obj).map(([key, value]) => {
+		return [transformFunction(key), value];
+	}));
+}
+
 export * as logger from "./logger";
