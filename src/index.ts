@@ -42,4 +42,10 @@ export function transformKeys
 	}));
 }
 
+export function transformValues<OldValueType = unknown, NewValueType = unknown>(obj: Record<string, OldValueType>, transformFunction: (value: OldValueType) => NewValueType): Record<string, NewValueType> {
+	return Object.fromEntries(Object.entries(obj).map(([key, value]) => {
+		return [key, transformFunction(value)];
+	}));
+}
+
 export * as logger from "./logger";
