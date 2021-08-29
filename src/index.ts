@@ -1,10 +1,10 @@
 /**
- * General debounce function.   
- * Delays invoking a function until after `timeout` milliseconds have elapsed since the last time the debounced function called 
+ * General debounce function.
+ *
+ * Delays invoking a function until after `timeout` milliseconds have elapsed since the last time the debounced function called
  */
-export function debounce
-	<FunctionInputType extends Array<unknown>>
-	(func: (...args: FunctionInputType) => void, timeout = 300): (...args: FunctionInputType) => void {
+export function debounce<FunctionInputType extends Array<unknown>>
+(func: (...args: FunctionInputType) => void, timeout = 300): (...args: FunctionInputType) => void {
 
 	let timer: NodeJS.Timeout;
 
@@ -18,14 +18,14 @@ export function debounce
 }
 
 /**
- * General memoize function   
+ * General memoize function.
+ *
  * Returns a memoized version of the given function
- * 
+ *
  * See https://en.wikipedia.org/wiki/Memoization to learn more
  */
-export function memoize
-	<FunctionInputType extends Array<unknown>>
-	(func: (...args: FunctionInputType) => void): (...args: FunctionInputType) => void {
+export function memoize<FunctionInputType extends Array<unknown>>
+(func: (...args: FunctionInputType) => void): (...args: FunctionInputType) => void {
 
 	const memory = new Map<unknown, unknown>();
 
@@ -47,8 +47,7 @@ export function memoize
 /**
  * Applies a function to all keys in the given object and returns the new object
  */
-export function transformKeys
-	<ObjectValueType = unknown>(obj: Record<string, ObjectValueType>, transformFunction: (key: string) => string): Record<string, ObjectValueType> {
+export function transformKeys<ObjectValueType = unknown>(obj: Record<string, ObjectValueType>, transformFunction: (key: string) => string): Record<string, ObjectValueType> {
 
 	return Object.fromEntries(Object.entries(obj).map(([key, value]) => {
 		return [transformFunction(key), value];
