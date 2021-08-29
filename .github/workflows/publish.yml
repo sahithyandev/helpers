@@ -5,7 +5,7 @@ on:
     branches: [ release ]
 
 jobs:
-  lint:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
