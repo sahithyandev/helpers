@@ -22,7 +22,8 @@ export default function generateTypes(): Plugin {
 	return {
 		name: "generate-types",
 		outputOptions(options) {
-			outputDir = options.dir;
+			outputDir = options.dir ||
+									options.file.split("/").slice(0, -1).join("/");
 			return options;
 		},
 		buildStart(options) {

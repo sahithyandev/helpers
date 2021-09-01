@@ -1,0 +1,14 @@
+### v0.0.1
+
+- First release
+- Released with commonjs build
+- Included
+	- debounce
+	- memoize
+	- transformKeys
+	- transformValues
+	
+### v0.0.2
+
+- Added ESM build
+- Updated package.json

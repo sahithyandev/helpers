@@ -1,8 +1,9 @@
 {
   "name": "@sahithyan/helpers",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
+  "description": "Tiny utility-function library",
   "main": "lib/index.js",
+  "module": "lib/index.es.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "rollup --config rollup.config.ts --configPlugin typescript",
@@ -13,8 +14,10 @@
   "files": [
     "lib"
   ],
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "utils"
+  ],
+  "author": "Sahithyan <sahithyan2701@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.2.5",

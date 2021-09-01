@@ -3,14 +3,20 @@ import typescript from "@rollup/plugin-typescript";
 
 import generateTypes from "./plugins/generate-types";
 
-export default {
+export default [{
+	file: "lib/index.js",
+	format: "cjs"
+}, {
+	file: "lib/index.es.js",
+	format: "esm"
+}].map(config => ({
 	input: "src/index.ts",
 	output: {
-		dir: "lib",
-		format: "cjs"
+		file: config.file,
+		format: config.format,
 	},
 	plugins: [
 		typescript(),
-		generateTypes()
+		config.format === "cjs" ? generateTypes() : null
 	]
-} as RollupOptions;
+} as RollupOptions));
