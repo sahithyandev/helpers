@@ -1,9 +1,8 @@
 import { Plugin } from "rollup";
-
-import * as logger from "../src/logger";
+import colors from "../src/colors";
 
 const executeCommand = (commandString: string) => {
-	logger.warn(`Executing "${commandString}"`);
+	console.log(colors.yellow(`Executing "${commandString}"`));
 
 	const { exec } = require("child_process");
 	return new Promise((resolve, reject) => {
@@ -31,7 +30,7 @@ export default function generateTypes(): Plugin {
 		},
 		generateBundle() {
 			if (Array.isArray(entries)) {
-				logger.log("GENERATE_TYPES");
+				console.log("GENERATE_TYPES");
 				entries.forEach(entry => {
 					executeCommand(`npm exec tsc -- -d --emitDeclarationOnly --declarationDir ${outputDir} ${entry}`);
 				});
