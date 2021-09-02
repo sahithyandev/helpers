@@ -20,7 +20,7 @@ jobs:
       - name: Run linter
         run: npm run lint
 
-  prettier-checl:
+  prettier-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
