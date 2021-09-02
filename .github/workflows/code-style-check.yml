@@ -19,12 +19,14 @@ jobs:
 
   lint:
     needs: build
+    runs-on: ubuntu-latest
     steps:
       - name: Run linter
         run: npm run lint
 
   prettier-checl:
     needs: build
+    runs-on: ubuntu-latest
     steps:
       - name: Run prettier
         run: npm run prettier-check
