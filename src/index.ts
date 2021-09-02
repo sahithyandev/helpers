@@ -63,4 +63,19 @@ export function transformValues<OldValueType = unknown, NewValueType = unknown>(
 	}));
 }
 
+/**
+ * Takes a list of functions as arguments, and returns a function which combines those functions. The output of each function will be passed down to the next, and the last function's output will be returned.
+ * 
+ * Note that the output is an Array
+ * 
+ * @example pipe(x => x + 1, y => y ** 2)(10) ===> [121] // (10 + 1) ** 2
+ */
+export function pipe<InputType extends Array<unknown> = unknown[], OutputType extends Array<unknown> = unknown[]>(...fnArr: ((...args) => unknown)[]) {
+	return (...args: InputType) => {
+		return fnArr.reduce((prevResult: InputType | unknown[], currentFn) => {
+			return [currentFn.apply(null, prevResult)];
+		}, args) as unknown as OutputType;
+	};
+
+}
 export * as logger from "./logger";
