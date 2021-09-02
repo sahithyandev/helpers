@@ -1,9 +1,9 @@
-name: Lint
+name: Style check
 
 on: [push, pull_request]
 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,5 +17,14 @@ jobs:
       - name: Install deps
         run: npm install
 
+  lint:
+    needs: build
+    steps:
       - name: Run linter
         run: npm run lint
+
+  prettier-checl:
+    needs: build
+    steps:
+      - name: Run prettier
+        run: npm run prettier-check
