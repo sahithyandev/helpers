@@ -3,7 +3,7 @@ name: Style check
 on: [push, pull_request]
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,16 +17,22 @@ jobs:
       - name: Install deps
         run: npm install
 
-  lint:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Run linter
         run: npm run lint
 
   prettier-checl:
-    needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js 15.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 15.x
+
+      - name: Install deps
+        run: npm install
+
       - name: Run prettier
         run: npm run prettier-check
