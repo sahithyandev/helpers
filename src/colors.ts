@@ -8,7 +8,7 @@ const FG_COLOR_CODES = {
 	cyan: "96",
 };
 
-const colors = transformValues(FG_COLOR_CODES, colorCode => {
+const colors = transformValues(FG_COLOR_CODES, (colorCode) => {
 	return (...msg: string[]): string => {
 		return [`\x1b[${colorCode}m`, msg.join(" "), RESET_COLOR].join("");
 	};

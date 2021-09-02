@@ -21,8 +21,7 @@ export default function generateTypes(): Plugin {
 	return {
 		name: "generate-types",
 		outputOptions(options) {
-			outputDir = options.dir ||
-									options.file.split("/").slice(0, -1).join("/");
+			outputDir = options.dir || options.file.split("/").slice(0, -1).join("/");
 			return options;
 		},
 		buildStart(options) {
@@ -31,10 +30,12 @@ export default function generateTypes(): Plugin {
 		generateBundle() {
 			if (Array.isArray(entries)) {
 				console.log("GENERATE_TYPES");
-				entries.forEach(entry => {
-					executeCommand(`npm exec tsc -- -d --emitDeclarationOnly --declarationDir ${outputDir} ${entry}`);
+				entries.forEach((entry) => {
+					executeCommand(
+						`npm exec tsc -- -d --emitDeclarationOnly --declarationDir ${outputDir} ${entry}`
+					);
 				});
 			}
-		}
+		},
 	};
 }
