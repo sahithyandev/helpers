@@ -2,7 +2,9 @@ import { transformValues } from "./functions";
 
 const RESET_COLOR = "\x1b[0m";
 
-const FG_COLOR_CODES = {
+type FG_COLOR = "red" | "green" | "yellow" | "blue" | "magenta" | "cyan";
+
+const FG_COLOR_CODES: Record<FG_COLOR, string> = {
 	red: "91",
 	green: "92",
 	yellow: "93",

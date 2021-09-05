@@ -48,29 +48,37 @@ export function memoize<FunctionInputType extends Array<unknown>>(
 /**
  * Applies a function to all keys in the given object and returns the new object
  */
-export function transformKeys<ObjectValueType = unknown>(
-	obj: Record<string, ObjectValueType>,
-	transformFunction: (key: string) => string
-): Record<string, ObjectValueType> {
+export function transformKeys<
+	OldKeyType extends string = string,
+	NewKeyType extends string = string,
+	ValueType = unknown
+>(
+	obj: Record<OldKeyType, ValueType>,
+	transformFunction: (key: OldKeyType) => NewKeyType
+): Record<NewKeyType, ValueType> {
 	return Object.fromEntries(
 		Object.entries(obj).map(([key, value]) => {
-			return [transformFunction(key), value];
+			return [transformFunction(key as OldKeyType), value];
 		})
-	);
+	) as Record<NewKeyType, ValueType>;
 }
 
 /**
  * Same as {@link transformKeys} but for values
  */
-export function transformValues<OldValueType = unknown, NewValueType = unknown>(
-	obj: Record<string, OldValueType>,
+export function transformValues<
+	OldValueType = unknown,
+	NewValueType = unknown,
+	KeyType extends string = string
+>(
+	obj: Record<KeyType, OldValueType>,
 	transformFunction: (value: OldValueType) => NewValueType
-): Record<string, NewValueType> {
+): Record<KeyType, NewValueType> {
 	return Object.fromEntries(
 		Object.entries(obj).map(([key, value]) => {
-			return [key, transformFunction(value)];
+			return [key as KeyType, transformFunction(value as OldValueType)];
 		})
-	);
+	) as Record<KeyType, NewValueType>;
 }
 
 /**
