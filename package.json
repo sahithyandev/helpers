@@ -1,6 +1,6 @@
 {
 	"name": "@sahithyan/helpers",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Tiny utility-function library",
 	"main": "lib/index.js",
 	"module": "lib/index.es.js",
