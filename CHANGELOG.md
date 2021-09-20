@@ -1,8 +1,10 @@
-## Unreleased
+## v0.0.3
 
 - `logger` removed
 - Added `colors`
 	Exposes color-coding functions
+- Added `pipe` function
+	Joins two or more function into one.
 - Added more type-safety
 	For `transformKeys`, `transformValues` and `colors`
 
